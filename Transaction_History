@@ -121,9 +121,9 @@
     <div class="container">
         <div class="sidebar">
             <h2>Admin</h2>
-            <div class="menu-item"><a href="#">Transactions</a></div>
-            <div class="menu-item" style="background: none; color: black;"><a href="#">Schedule</a></div>
-            <div class="menu-item" style="background: none; color: black;"><a href="#">Monthly Report</a></div>
+            <div class="menu-item"><a href="Transaction_History.html">Transactions</a></div>
+            <div class="menu-item" style="background: none; color: black;"><a href="Schedule.html">Schedule</a></div>
+            <div class="menu-item" style="background: none; color: black;"><a href="Monthly_Report.html">Monthly Report</a></div>
         </div>
         <div class="content">
             <div class="header">
