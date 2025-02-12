@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments - Golden Hands</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #d4d4d4;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to right, #c89d5b, #e0ab68);
+            padding: 10px 20px;
+        }
+        .navbar img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        .navbar a {
+            color: black;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .navbar .logout {
+            background: black;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .container {
+            display: flex;
+            width: 80%;
+            margin: 20px auto;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .sidebar {
+            background: #e0e0e0;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+        }
+        .sidebar img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        .sidebar a {
+            display: block;
+            text-decoration: none;
+            color: black;
+            margin: 10px 0;
+        }
+        .content {
+            flex: 1;
+            padding: 30px;
+        }
+        .appointment-card {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div>
+            <img src="GoldenHandsImage.jpg" alt="Golden Hands">
+        </div>
+        <div>
+            <a href="#">Services</a>
+            <a href="#">Branches</a>
+            <a href="#">Contact Us</a>
+            <a href="#">My Account</a>
+            <a href="#" class="logout">Log Out</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <img src="samplepicture.jpg" alt="Profile">
+            <h3>First Last Name</h3>
+            <a href="Profile.html">Edit Profile</a>
+            <a href="#">Appointments</a>
+            <a href="#">Rewards</a>
+        </div>
+        <div class="content">
+            <h2>Appointments</h2>
+            
+            <h3>Upcoming Appointment</h3>
+            <div class="appointment-card">
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" id="upcoming-date" class="date-input" value="2025-02-12">
+                </div>
+                <div class="form-group">
+                    <label>Time</label>
+                    <input type="time" value="10:00">
+                </div>
+                <div class="form-group">
+                    <label>Therapist Name</label>
+                    <input type="text" value="Therapist Name">
+                </div>
+                <div class="form-group">
+                    <label>Branch</label>
+                    <input type="text" value="Branch">
+                </div>
+            </div>
+            
+            <h3>Previous Appointments</h3>
+            <div class="appointment-card">
+                <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" class="date-input" value="2025-02-10">
+                </div>
+                <div class="form-group">
+                    <label>Time</label>
+                    <input type="time" value="14:00">
+                </div>
+                <div class="form-group">
+                    <label>Therapist Name</label>
+                    <input type="text" value="Therapist Name">
+                </div>
+                <div class="form-group">
+                    <label>Branch</label>
+                    <input type="text" value="Branch">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.date-input').forEach(input => {
+            input.addEventListener('change', function() {
+                const dateValue = this.value;
+                const year = dateValue.split('-')[0];
+                if (!/^[0-9]{4}$/.test(year)) {
+                    alert('Please enter a valid date.');
+                    this.value = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
