@@ -99,16 +99,54 @@
     <div class="form-container">
         <h3>Login Here</h3>
 
-        <label for="username">Username</label>
-        <input type="text" id="username" placeholder="Email or Phone">
+        <label for="username">Email</label>
+        <input type="text" id="email" placeholder="Email">
 
         <label for="password">Password</label>
         <input type="password" id="password" placeholder="Password">
 
         <button class="sign-in">Sign In</button>
-        <button class="create-account">Create New Account</button>
-
+        <a href="{{ route('register') }}">
+            <button class="create-account">Create New Account</button>
+        </a>
         <a href="#" class="forgot-password">Forgot Password?</a>
     </div>
+    <script>
+        document.querySelector('.sign-in').addEventListener('click', function(event) {
+            event.preventDefault();
+        
+            const username = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Make the request to the Laravel backend (POST request)
+            fetch('{{ route("login") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}', // Add CSRF token for security
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password,
+                }),
+                credentials: 'same-origin', // Ensure the session cookie is sent along with the request
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert('Login successful');
+                    // Optionally redirect the user after successful login
+                    window.location.href = '/profile';  // Redirect to a different page (like the dashboard)
+                } else {
+                    alert('Login failed');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
+        });
+    </script>
+
 </body>
 </html>

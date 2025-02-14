@@ -103,7 +103,10 @@
             <a href="#">Branches</a>
             <a href="#">Contact Us</a>
             <a href="#">My Account</a>
-            <a href="#" class="logout">Log Out</a>
+            <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+                @csrf <!-- CSRF protection token -->
+                <button type="submit" class="logout">Log Out</button>
+            </form>
         </div>
     </div>
 

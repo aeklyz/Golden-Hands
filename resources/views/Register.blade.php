@@ -121,15 +121,69 @@
         <h3>Sign Up</h3>
 
         <label for="username">Username</label>
-        <input type="text" id="username" placeholder="Email or Phone">
+        <input type="text" id="username" placeholder="username">
 
+        <label for="email">Email</label>
+        <input type="text" id="email" placeholder="Email or Phone">
+        
         <label for="password">Password</label>
         <input type="password" id="password" placeholder="Password">
+
+        <label for="password_confirmation">Confirm Password</label>
+        <input type="password" id="password_confirmation" placeholder="Confirm Password">
+
+        
         <label for="terms" class="terms-label">
             <input type="checkbox" id="terms"> Agree to terms and conditions
         </label>
-        <p>Insert link</p>
         <button class="Register">Register</button>
     </div>
+
+    <script>
+        document.querySelector('.Register').addEventListener('click', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const passwordConfirmation = document.getElementById('password_confirmation').value;
+            const terms = document.getElementById('terms').checked;
+
+            // Check if terms are agreed to
+            if (!terms) {
+                alert('You must agree to the terms and conditions');
+                return;
+            }
+
+            // Make a POST request to register the user
+            fetch('{{ route(name: "registration") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',  // CSRF protection
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    password: password,
+                    password_confirmation: passwordConfirmation, 
+                }),
+                credentials: 'same-origin', // Send cookies with the request
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert('Registration successful');
+                    window.location.href = '/login'; // Redirect to the login page after registration
+                } else {
+                    alert('Registration failed: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred during registration. Please try again.');
+            });
+        });
+    </script>
 </body>
 </html>
