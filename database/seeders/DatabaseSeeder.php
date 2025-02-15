@@ -19,19 +19,11 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
-            'is_admin'=> true,
         ]);
-
+        
         User::factory()->create([
-            'name' => 'Test User1',
-            'email' => 'test1@example.com',
-            'is_admin'=> false,
-        ]);
-
-        User::factory()->create([
-            'name' => 'Test User3',
-            'email' => 'test2@example.com',
-            'is_admin'=> false,
+            'name' => 'Test User 2',
+            'email' => 'a@gmail.com',
         ]);
 
         DB::table('services')->insert([
@@ -42,7 +34,7 @@ class DatabaseSeeder extends Seeder
             ['service_name' => 'Swedish Massage', 'description' => '', 'price' => 500.00, 'duration' => 60, 'service_group' => 'regular_massage'],
             ['service_name' => 'Combination Massage', 'description' => '', 'price' => 600.00, 'duration' => 90, 'service_group' => 'regular_massage'],
             ['service_name' => 'Foot and Hand Reflex', 'description' => '', 'price' => 700.00, 'duration' => 90, 'service_group' => 'regular_massage'],
-
+    
         ]);
         
         // Signature Massage

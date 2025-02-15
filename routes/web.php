@@ -1,54 +1,31 @@
 <?php
+
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 Route::get('/', function () {
-    if (auth()->check()) {
-        // If the user is authenticated, redirect to profile
-        return redirect()->route('profile');
-    } else {
-        // If not authenticated, redirect to login
-        return view('Sign_In');
-    }
+    return view('welcome');
 });
 
-Route::get('/signin', function () {
-    return view('Sign_In');
-});
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 
-Route::get('/faq', function () {
-    return view('FAQ');
-});
-
-Route::get('/service_visitor', function () {
-    return view('ServiceCatalogVisitor');
-});
-
-Route::get('/register', function () {
-    return view('Register');
-});
-
-Route::post('/registration', [RegisteredUserController::class, 'store'])->name('registration');
-Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login');
-
-// Protected profile route, accessible only by authenticated users
-Route::middleware('auth')->group(function () {
-    // Profile Overview (Main Profile Page)
-    Route::get('/profile', function () {
-        return view('Profile', ['user' => auth()->user()]);
-    })->name('profile');
-    Route::get('/rewards', function () {
-        return view('Rewards', ['user' => auth()->user()]);
-    })->name('rewards');
     Route::get('/appointments', function () {
-        return view('Appointments', ['user' => auth()->user()]);
-    })->name('appointments');
-    Route::get('/servicecatalogsigned', function () {
-        return view('ServiceCatalogSigned', ['user' => auth()->user()]);
-    })->name('servicecatalog');
-    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+        return view('appointments');
+    })->name('customer.appointments');
+
+    Route::get('/rewards', function () {
+        return view('rewards');
+    })->name('customer.rewards');
 });
 
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
 require __DIR__.'/auth.php';
