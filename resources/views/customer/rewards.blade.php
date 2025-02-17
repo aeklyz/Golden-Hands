@@ -111,7 +111,7 @@
     <div class="container">
         <div class="sidebar">
             <img src="samplepicture.jpg" alt="Profile">
-            <h3>First Last Name</h3>
+            <h3>{{ Auth::user()->name }}</h3>
             <a href="Profile.html">Edit Profile</a>
             <a href="Appointments.html">Appointments</a>
             <a href="#">Rewards</a>
@@ -125,19 +125,20 @@
             </div>
             
             <h3>Earn Points</h3>
-            <div class="rewards-list">
-                <span>Leave Review - 10 points</span>
-                <button class="redeem-btn">Redeem</button>
-            </div>
-            <div class="rewards-list">
-                <span>Book Appointment - 20 points</span>
-                <button class="redeem-btn">Redeem</button>
-            </div>
-            <div class="rewards-list">
-                <span>Refer a Friend - 20 points</span>
-                <button class="redeem-btn">Redeem</button>
+
+            @foreach ($rewards as $reward)
+                <div class="rewards-list">
+                    <span>{{ $reward->description }} - {{ $reward->points }} points</span>
+                    <button class="redeem-btn">Redeem</button>
+                </div>
+            @endforeach
+            
+            <!-- Pagination links -->
+            <div class="pagination">
+                {{ $rewards->links() }}
             </div>
         </div>
     </div>
+
 </body>
 </html>

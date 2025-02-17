@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Services;
+use App\Models\Reward;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class ServicesController extends Controller
+class RewardController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $rewards = Reward::where('customer_id', Auth::id())
+                         ->paginate(2);
+
+        // Return the rewards to the view
+        return view('customer.rewards', compact('rewards'));
     }
 
     /**
@@ -34,7 +39,7 @@ class ServicesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Services $services)
+    public function show(Reward $rewards)
     {
         //
     }
@@ -42,7 +47,7 @@ class ServicesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Services $services)
+    public function edit(Reward $rewards)
     {
         //
     }
@@ -50,7 +55,7 @@ class ServicesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Services $services)
+    public function update(Request $request, Reward $rewards)
     {
         //
     }
@@ -58,7 +63,7 @@ class ServicesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Services $services)
+    public function destroy(Reward $rewards)
     {
         //
     }

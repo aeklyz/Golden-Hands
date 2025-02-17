@@ -1,11 +1,16 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\RewardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/service-catalog', [ServiceController::class, 'showCatalog']);
+Route::get('/service-detail/{serviceName}', [ServiceController::class, 'showServiceDetail']);
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
@@ -16,9 +21,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return view('appointments');
     })->name('customer.appointments');
 
-    Route::get('/rewards', function () {
-        return view('rewards');
-    })->name('customer.rewards');
+    Route::get('/rewards', [RewardController::class, 'index'])->name('customer.rewards');
+
 });
 
 

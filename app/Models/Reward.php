@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Rewards extends Model
+class Reward extends Model
 {
     use HasFactory;
 
@@ -13,7 +13,7 @@ class Rewards extends Model
         'description',
         'points',
         'is_redeemable',
-        'user_id',
+        'customer_id',
     ];
 
     /**

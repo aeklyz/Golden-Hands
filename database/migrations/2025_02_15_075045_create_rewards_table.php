@@ -12,11 +12,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('rewards', function (Blueprint $table) {
-            $table->id(); // Primary key, auto-incrementing
-            $table->text('description'); // Description of the reward
-            $table->integer('points'); // Points associated with the reward
-            $table->boolean('is_redeemable')->default(true); // If the reward can be redeemed
-            $table->foreignId('customer_id')->constrained('users')->onDelete('cascade'); // Foreign key to the users table
+            $table->id();
+            $table->text('description');
+            $table->integer('points');
+            $table->boolean('is_redeemable')->default(true);
+            $table->foreignId('customer_id')->constrained('users')->onDelete('cascade');
             $table->timestamps(); // Created at and updated at timestamps
         });
     }

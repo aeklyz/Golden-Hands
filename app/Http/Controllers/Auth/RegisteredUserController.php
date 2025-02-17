@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\DB;
 
 class RegisteredUserController extends Controller
 {
@@ -40,6 +41,15 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        $rewards = [
+            ['description' => 'Leave Review', 'points' => 10, 'is_redeemable' => true, 'customer_id' => $user->id],
+            ['description' => 'Book Appointment', 'points' => 20, 'is_redeemable' => true, 'customer_id' => $user->id],
+            ['description' => 'Refer a Friend', 'points' => 150, 'is_redeemable' => true, 'customer_id' => $user->id],
+        ];
+    
+        DB::table('rewards')->insert($rewards);
+    
 
         event(new Registered($user));
 

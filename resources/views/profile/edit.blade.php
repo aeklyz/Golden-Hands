@@ -1,5 +1,5 @@
 <x-app-layout>
-<div class="navbar">
+    <div class="navbar">
         <div>
             <img src="GoldenHandsImage.jpg" alt="Golden Hands">
            
