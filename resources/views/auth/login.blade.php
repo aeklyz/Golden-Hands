@@ -5,7 +5,7 @@
             @csrf
             <h3>Login Here</h3>
 
-            <label for="email">email</label>
+            <label for="email">Email</label>
             <input type="text" id="email" name="email" placeholder="Email">
 
             <label for="password">Password</label>

@@ -7,6 +7,18 @@ use Illuminate\Http\Request;
 
 class BookingController extends Controller
 {
+    public function showCheckout()
+    {
+        $rewards = 1;
+
+        // Return the rewards to the view
+        return view('customer/checkout', compact('rewards'));
+    }
+
+    public function showBookingSchedule()
+    {
+        return view('staff.history');
+    }
     /**
      * Display a listing of the resource.
      */

@@ -15,6 +15,7 @@ class CreateServicesTable extends Migration
             $table->decimal('price', 10, 2);
             $table->integer('duration'); // Duration in minutes
             $table->string('service_group');
+            $table->string('image_path')->nullable();
             $table->timestamps();
         });
     }

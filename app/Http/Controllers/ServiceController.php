@@ -13,7 +13,7 @@ class ServiceController extends Controller
         $services = Service::all(); // You can modify this to filter by group, etc.
 
         // Return the view with the services data
-        return view('customer/service-catalog', compact('services'));
+        return view('customer.service-catalog', compact('services'));
     }
 
     public function showServiceDetail($serviceName)
@@ -21,8 +21,9 @@ class ServiceController extends Controller
         // Fetch the service by its name
         $service = Service::where('service_name', ucfirst(str_replace('-', ' ', $serviceName)))->firstOrFail();
 
-        return view('customer/service-detail', compact('service'));
+        return view('customer.service-detail', compact('service'));
     }
+
     /**
      * Display a listing of the resource.
      */

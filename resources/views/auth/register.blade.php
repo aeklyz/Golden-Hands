@@ -24,7 +24,7 @@
             <label for="terms" class="terms-label">
                 <input type="checkbox" id="terms"> Agree to terms and conditions
             </label>
-            <button class="Register">Register</button>
+            <button class="register-btn">Register</button>
             <a href="{{ route('login') }}">
                 {{ 'Already registered?' }}
             </a>
