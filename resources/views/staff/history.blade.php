@@ -3,32 +3,30 @@
         <h2>Transaction Report</h2>
 
         <!-- Transaction Table -->
-        <table>
-            <thead>
-                <tr>
-                    <th>Therapist</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Service</th>
-                    <th>Price</th>
-                </tr>
-            </thead>
-            <tbody id="transaction-table">
-                <tr>
-                    <td contenteditable="true">John Doe</td>
-                    <td contenteditable="true">2024-02-08</td>
-                    <td contenteditable="true">10:00 AM</td>
-                    <td contenteditable="true">Massage</td>
-                    <td contenteditable="true">$50</td>
-                </tr>
-                <tr>
-                    <td contenteditable="true">Jane Smith</td>
-                    <td contenteditable="true">2024-02-08</td>
-                    <td contenteditable="true">11:30 AM</td>
-                    <td contenteditable="true">Facial</td>
-                    <td contenteditable="true">$70</td>
-                </tr>
-            </tbody>
-        </table>
+        @if ($appointments->count())
+            <table>
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Date</th>
+                        <th>Duration</th>
+                        <th>Service</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody id="transaction-table">
+                    <tr>
+                        <td>{{ $appointment->customer->name ?? 'N/A' }}</td>
+                        <td>{{ \Carbon\Carbon::parse($appointment->booking_date)->toDateString() }}
+                        </td>
+                        <td>{{ $appointment->duration ?? 'N/A' }} hours</td>
+                        <td>{{ $appointment->service->service_name ?? 'N/A' }}</td>
+                        <td>{{ $appointment->service->price ?? 'N/A' }} php</td>
+                    </tr>
+                </tbody>
+            </table>
+        @else
+            <p>No upcoming appointments found.</p>
+        @endif
     </div>
 </x-staff-layout>

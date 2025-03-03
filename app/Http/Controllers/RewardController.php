@@ -8,13 +8,51 @@ use Illuminate\Support\Facades\Auth;
 
 class RewardController extends Controller
 {
+    public function redeem($rewardId)
+    {
+        $reward = Reward::findOrFail($rewardId);
+
+        // Ensure the reward is redeemable
+        if ($reward->is_redeemable) {
+            $user = auth()->user();
+
+            // Add the reward points to the user's points balance
+            $user->points += $reward->points;
+            $user->save();
+
+            // Update the reward to mark it as redeemed
+            $reward->is_redeemable = false;
+            $reward->save();
+
+            $rewards = Reward::where('customer_id', Auth::id())
+                ->where('is_redeemable', true)
+                ->paginate(2);
+
+            // Return the rewards to the view
+            return view('customer.rewards', compact('rewards'));
+
+            // Return a view with a success message
+            /*
+            return view('rewards.redeemed', [
+                'reward' => $reward,
+                'user' => $user,
+                'message' => 'Reward redeemed successfully!',
+            ]);
+            */
+        } else {
+            return back();
+            // If the reward is not redeemable, return with an error message
+            // return back()->with('error', 'This reward is no longer redeemable.');
+        }
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $rewards = Reward::where('customer_id', Auth::id())
-                         ->paginate(2);
+            ->where('is_redeemable', true)
+            ->paginate(2);
 
         // Return the rewards to the view
         return view('customer.rewards', compact('rewards'));

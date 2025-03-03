@@ -13,8 +13,7 @@ class CreateServicesTable extends Migration
             $table->string('service_name');
             $table->text('description')->nullable();
             $table->decimal('price', 10, 2);
-            $table->integer('duration'); // Duration in minutes
-            $table->string('service_group');
+            $table->enum('service_group', ['add_on', 'regular_massage', 'signature_massage']);
             $table->string('image_path')->nullable();
             $table->timestamps();
         });

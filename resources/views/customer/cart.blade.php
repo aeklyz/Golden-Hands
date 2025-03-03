@@ -2,29 +2,16 @@
     <div class="cart-container">
         <h2>Cart Checkout</h2>
 
-        <div class="cart-item">
-            <img src="service1.jpg" alt="Service 1">
-            <div class="cart-details">
-                <h3>Service 1</h3>
-                <p class="cart-price">₱400</p>
+        @foreach ($bookings as $booking)
+            <div class="cart-item">
+                <img src="{{ asset('services/' . $booking->service->image_path) }}"
+                    alt="{{ $booking->service->service_name }}">
+                <div class="cart-details">
+                    <h3>{{ $booking->service->service_name }}</h3>
+                    <p class="cart-price">₱{{ number_format($booking->service->price, 2) }}</p>
+                </div>
             </div>
-        </div>
-
-        <div class="cart-item">
-            <img src="service2.jpg" alt="Service 2">
-            <div class="cart-details">
-                <h3>Service 2</h3>
-                <p class="cart-price">₱600</p>
-            </div>
-        </div>
-
-        <div class="cart-item">
-            <img src="service3.jpg" alt="Service 3">
-            <div class="cart-details">
-                <h3>Service 3</h3>
-                <p class="cart-price">₱200</p>
-            </div>
-        </div>
+        @endforeach
     </div>
 
     <!-- Fixed Checkout Container -->

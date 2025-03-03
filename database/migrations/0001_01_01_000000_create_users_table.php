@@ -18,6 +18,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('is_staff')->default(false);
+            $table->integer('points')->default(0);
+            $table->enum('service_group', ['none', 'add_on', 'regular_massage', 'signature_massage'])->default('none');
             $table->rememberToken();
             $table->timestamps();
         });

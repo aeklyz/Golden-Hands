@@ -14,8 +14,10 @@ class CreateBookingsTable extends Migration
             $table->foreignId('service_id')->constrained('services'); // Foreign key referencing the services table
             $table->foreignId('staff_id')->constrained('users');     // Foreign key referencing the users table (staff)
             $table->dateTime('booking_date');
-            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
-            $table->boolean('is_paid')->default(false); // Payment status
+            $table->integer('duration'); // Duration in hours
+            $table->enum('booking_status', ['pending', 'approved', 'rejected'])->default('pending'); 
+            $table->enum('payment_status', ['pending', 'completed', 'failed'])->default('pending');
+            $table->enum('payment_method', ['credit_card', 'paypal', 'cash', 'bank_transfer'])->default('credit_card');
             $table->timestamps();
         });
     }

@@ -8,7 +8,7 @@
         <title>{{ config('app.name', 'Golden Hands') }}</title>
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://cdnjs.icloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
         <!-- Consolidated CSS files -->
         <link rel="stylesheet" href="{{ asset('css/main.css') }}">
         <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">

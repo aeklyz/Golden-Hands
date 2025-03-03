@@ -1,12 +1,6 @@
 <x-app-layout>
     <div class="container">
-        <div class="sidebar">
-            <img src="user-profile.jpg" alt="Profile">
-            <h3>{{ Auth::user()->name }}</h3>
-            <a href="{{ route('profile.edit') }}">Edit Profile</a>
-            <a href="{{ route('customer.appointments') }}">Appointments</a>
-            <a href="{{ route('customer.rewards') }}">Rewards</a>
-        </div>
+        <x-user-sidebar/>
         <!-- Content Area -->
         <div class="content">
             <!-- Display Mode -->
@@ -21,5 +15,5 @@
             <!-- Edit Mode (hidden by default) -->
             @include('profile.partials.update-profile-information-form')
         </div>
-    </div> 
+    </div>
 </x-app-layout>
