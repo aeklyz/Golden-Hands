@@ -32,7 +32,7 @@
                 </div>
 
             @else
-                <p>No upcoming appointments found.</p>
+                <p>No previous appointments found.</p>
             @endif
         </div>
     </div>

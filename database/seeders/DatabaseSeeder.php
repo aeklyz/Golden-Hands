@@ -27,10 +27,21 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::factory()->create([
+            'name' => 'Therapist 2',
+            'email' => 'test2@gmail.com',
+        ]);
+
+        User::factory()->create([
             'name' => 'Customer 0',
             'email' => 'a@gmail.com',
             'is_staff' => false,
         ]);
+
+        User::factory()->create([
+            'name' => 'Customer 0',
+            'email' => 'a@gmail.com',
+            'is_staff' => false,
+        ]);        
 
         // Regular Massage
         DB::table('services')->insert([

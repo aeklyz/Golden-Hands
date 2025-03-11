@@ -4,14 +4,16 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\RewardController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ChatbotController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [ServiceController::class, 'showCatalog'])->name('customer.catalog');
+Route::get('/', [ServiceController::class, 'showCatalog']);
 Route::get('/service-catalog', [ServiceController::class, 'showCatalog'])->name('customer.catalog');
 Route::get('/service-detail/{serviceName}', [ServiceController::class, 'showServiceDetail']);
 Route::get('/faq', function () {
     return view('faq');
 })->name('faq');
+Route::post('/chat', [ChatbotController::class, 'handle']);
 
 Route::middleware(['auth', 'verified', 'customer'])->group(function () {
     Route::get('/upcomingappointments', [BookingController::class, 'upcomingAppointments'])->name('customer.upcomingappointments');
