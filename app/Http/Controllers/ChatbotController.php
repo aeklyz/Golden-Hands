@@ -3,33 +3,24 @@
 namespace App\Http\Controllers;
 
 use BotMan\BotMan\BotMan;
+use BotMan\BotMan\BotManFactory;
+use BotMan\BotMan\Cache\LaravelCache;
 use Illuminate\Http\Request;
-use BotMan\BotMan\Messages\Incoming\Answer;
 
 class ChatbotController extends Controller
 {
-    /**
-     * Handle user message.
-     */
     public function handle(Request $request)
     {
-        $botman = app('botman');
+        $config = [];
 
-        // Handle the incoming user message
-        $botman->hears('{message}', function (BotMan $bot, $message) {
-            // Logic to reply to the user message
-            $bot->reply("You said: " . $message);
+        // Create BotMan instance
+        $botman = BotManFactory::create($config, new LaravelCache);
+
+        // Define BotMan hears responses
+        $botman->hears('hello', function (BotMan $bot) {
+            $bot->reply('Hello! How can I assist you today?');
         });
 
-        // The input message from the user
-        $userMessage = $request->input('message');
-
-        // Make BotMan process the message and get a response
-        $response = $botman->userStorage()->get('user')->replyTo($userMessage);
-
-        // Return the response to the frontend
-        return response()->json([
-            'message' => $response
-        ]);
+        $botman->listen();
     }
 }

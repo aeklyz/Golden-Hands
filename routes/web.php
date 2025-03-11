@@ -13,7 +13,7 @@ Route::get('/service-detail/{serviceName}', [ServiceController::class, 'showServ
 Route::get('/faq', function () {
     return view('faq');
 })->name('faq');
-Route::post('/chat', [ChatbotController::class, 'handle']);
+Route::match(['get', 'post'], '/botman', [ChatbotController::class, 'handle']);
 
 Route::middleware(['auth', 'verified', 'customer'])->group(function () {
     Route::get('/upcomingappointments', [BookingController::class, 'upcomingAppointments'])->name('customer.upcomingappointments');
