@@ -25,4 +25,5 @@
         </div>
     </div>
 </div>
+@include('layouts.chatbot')
 </x-app-layout>

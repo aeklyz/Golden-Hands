@@ -15,7 +15,7 @@ Route::get('/faq', function () {
 })->name('faq');
 Route::match(['get', 'post'], '/botman', [ChatbotController::class, 'handle']);
 
-Route::middleware(['auth', 'verified', 'customer'])->group(function () {
+Route::middleware(['auth', 'customer'])->group(function () {
     Route::get('/upcomingappointments', [BookingController::class, 'upcomingAppointments'])->name('customer.upcomingappointments');
     Route::get('/previousappointments', [BookingController::class, 'previousAppointments'])->name('customer.previousappointments');
 
@@ -26,6 +26,12 @@ Route::middleware(['auth', 'verified', 'customer'])->group(function () {
     Route::post('/redeem/{id}', [RewardController::class, 'redeem'])->name('customer.redeem');
 });
 
+Route::middleware(['auth', 'staff'])->group(function () {
+    Route::get('/staff/history', [BookingController::class, 'staffHistory'])->name('staff.history');
+    Route::get('/staff/report', [BookingController::class, 'staffReport'])->name('staff.report');
+    Route::get('/staff/schedule', [BookingController::class, 'staffSchedule'])->name('staff.schedule');
+});
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -34,16 +40,8 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/bookings', [BookingController::class, 'create'])->name('bookings.create');
-
-    // Handle form submission (POST request)
     Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
     Route::delete('/booking/{booking}', [BookingController::class, 'destroy'])->name('booking.destroy');
-});
-
-Route::middleware(['auth', 'staff'])->group(function () {
-    Route::get('/staff/history', [BookingController::class, 'staffHistory'])->name('staff.history');
-    Route::get('/staff/report', [BookingController::class, 'staffSchedule'])->name('staff.report');
-    Route::get('/staff/schedule', [BookingController::class, 'staffSchedule'])->name('staff.schedule');
 });
 
 require __DIR__.'/auth.php';

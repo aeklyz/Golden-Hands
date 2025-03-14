@@ -1,0 +1,137 @@
+[
+    {
+        "instruction": "Simple response from the user.",
+        "input": "Hello",
+        "output": "Hi! how may I help you?"
+    },
+    {
+        "instruction": "Provide an overview of Golden Hands Spa.",
+        "input": "What is the Golden Hands Spa?",
+        "output": "Golden Hands Spa is a Spa based in the Philippines that has various massages."
+    },
+    {
+        "instruction": "Provide the operating hours of Golden Hands Spa.",
+        "input": "What are your operating hours?",
+        "output": "Golden Hands Spa operates from 10:00 AM to 10:00 PM, seven days a week, so you can enjoy a relaxing massage at your convenience."
+    },
+    {
+        "instruction": "Do I need to make an appointment at Golden Hands Spa?",
+        "input": "Do I need to make an appointment?",
+        "output": "While walk-ins are welcome, we highly recommend making an appointment to ensure availability, especially during peak hours."
+    },
+    {
+        "instruction": "What payment methods are accepted at Golden Hands Spa?",
+        "input": "What payment methods do you accept?",
+        "output": "We accept a variety of payment methods, including cash, credit/debit cards (Visa, MasterCard), and mobile payment apps such as GCash and PayMaya."
+    },
+    {
+        "instruction": "Are the therapists at Golden Hands Spa certified?",
+        "input": "Are your therapists certified?",
+        "output": "Yes, all of our therapists are fully certified and trained in various massage techniques to ensure the highest level of service and your safety."
+    },
+    {
+        "instruction": "Does Golden Hands Spa offer home service massages?",
+        "input": "Do you offer home service massages?",
+        "output": "Yes, we offer home service massages! Simply contact us in advance to schedule a session at your location, and our professional therapist will come to you."
+    },
+    {
+        "instruction": "What is the Regular Massage offered by Golden Hands Spa?",
+        "input": "What is Regular Massage?",
+        "output": "Regular Massage is a soothing and relaxing massage to relieve stress and tension at the price of 500.00."
+    },
+    {
+        "instruction": "What is the Swedish Massage offered by Golden Hands Spa?",
+        "input": "What is Swedish Massage?",
+        "output": "Swedish Massage is a gentle, full-body massage aimed at relaxation and improved circulation at the price of 500.00."
+    },
+    {
+        "instruction": "What is the Combination Massage offered by Golden Hands Spa?",
+        "input": "What is Combination Massage?",
+        "output": "Combination Massage is a blend of various massage techniques to address different needs and enhance relaxation at the price of 600.00."
+    },
+    {
+        "instruction": "What is the Foot and Hand Reflex offered by Golden Hands Spa?",
+        "input": "What is Foot and Hand Reflex?",
+        "output": "Foot and Hand Reflex is focused on relieving stress and promoting relaxation through reflex points in the feet and hands at the price of 700.00."
+    },
+    {
+        "instruction": "What is the Signature Massage offered by Golden Hands Spa?",
+        "input": "What is Signature Massage?",
+        "output": "Signature Massage is a unique, customized massage that targets your specific needs at the price of 600.00."
+    },
+    {
+        "instruction": "What is the Hilot w/ Foot Reflex offered by Golden Hands Spa?",
+        "input": "What is Hilot w/ Foot Reflex?",
+        "output": "Hilot w/ Foot Reflex is a traditional Filipino massage with foot reflexology for full-body relief at the price of 800.00."
+    },
+    {
+        "instruction": "What is the Deep Tissue Massage offered by Golden Hands Spa?",
+        "input": "What is Deep Tissue Massage?",
+        "output": "Deep Tissue Massage targets deeper layers of muscle tissue to release chronic tension and pain at the price of 900.00."
+    },
+    {
+        "instruction": "What is the Shiatsu Massage offered by Golden Hands Spa?",
+        "input": "What is Shiatsu Massage?",
+        "output": "Shiatsu Massage is a Japanese massage using finger pressure on specific points to restore balance and energy at the price of 850.00."
+    },
+    {
+        "instruction": "What is the Thai Massage offered by Golden Hands Spa?",
+        "input": "What is Thai Massage?",
+        "output": "Thai Massage is a combination of massage and assisted yoga stretches to improve flexibility and relieve tension at the price of 950.00."
+    },
+    {
+        "instruction": "What is Aromatherapy offered by Golden Hands Spa?",
+        "input": "What is Aromatherapy?",
+        "output": "Aromatherapy is a relaxing massage using essential oils to promote emotional and physical well-being at the price of 700.00."
+    },
+    {
+        "instruction": "What is the Lymphatic Massage offered by Golden Hands Spa?",
+        "input": "What is Lymphatic Massage?",
+        "output": "Lymphatic Massage stimulates the lymphatic system to enhance detoxification and reduce fluid retention at the price of 900.00."
+    },
+    {
+        "instruction": "What is the Baby Massage offered by Golden Hands Spa?",
+        "input": "What is Baby Massage?",
+        "output": "Baby Massage is gentle massage techniques designed to calm and soothe babies at the price of 500.00."
+    },
+    {
+        "instruction": "What is the Prenatal Massage offered by Golden Hands Spa?",
+        "input": "What is Prenatal Massage?",
+        "output": "Prenatal Massage is a soothing massage for pregnant women to relieve tension and support overall well-being at the price of 700.00."
+    },
+    {
+        "instruction": "What is the Postnatal and Lactating Massage offered by Golden Hands Spa?",
+        "input": "What is Postnatal and Lactating Massage?",
+        "output": "Postnatal and Lactating Massage is designed to support new mothers by relieving stress and promoting milk production at the price of 750.00."
+    },
+    {
+        "instruction": "What is the Twin Regular Massage offered by Golden Hands Spa?",
+        "input": "What is Twin Regular Massage?",
+        "output": "Twin Regular Massage is a pair of relaxing regular massages, ideal for couples or friends, at the price of 900.00."
+    },
+    {
+        "instruction": "What is the Twin Signature Massage offered by Golden Hands Spa?",
+        "input": "What is Twin Signature Massage?",
+        "output": "Twin Signature Massage is a pair of signature massages with tailored techniques to suit both individuals at the price of 1100.00."
+    },
+    {
+        "instruction": "What is the Hot Pack offered by Golden Hands Spa?",
+        "input": "What is Hot Pack?",
+        "output": "Hot Pack is a warm compress to soothe sore muscles and enhance relaxation at the price of 150.00."
+    },
+    {
+        "instruction": "What is Ear Candling offered by Golden Hands Spa?",
+        "input": "What is Ear Candling?",
+        "output": "Ear Candling is a natural therapy to help clear the ears and promote relaxation at the price of 250.00."
+    },
+    {
+        "instruction": "What is the Hot Stone offered by Golden Hands Spa?",
+        "input": "What is Hot Stone?",
+        "output": "Hot Stone is heated stones applied to the body to promote deeper relaxation and muscle relief at the price of 300.00."
+    },
+    {
+        "instruction": "What is Ventosa offered by Golden Hands Spa?",
+        "input": "What is Ventosa?",
+        "output": "Ventosa is cupping therapy to improve blood flow and relieve muscle tension at the price of 300.00."
+    }
+]

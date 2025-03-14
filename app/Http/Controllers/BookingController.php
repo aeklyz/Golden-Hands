@@ -119,6 +119,13 @@ class BookingController extends Controller
         return view('staff.history', compact('appointments'));
     }
 
+    public function staffReport(Request $request)
+    {
+        $appointments = 0;
+        // Pass the appointments to the view
+        return view('staff.report', compact('appointments'));
+    }
+
     /**
      * Display a listing of the resource.
      */

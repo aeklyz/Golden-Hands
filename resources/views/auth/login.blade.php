@@ -13,7 +13,7 @@
 
             <button class="sign-in">Sign In</button>
             @if (Route::has('password.request'))
-                <a class="forgot-password" href="{{ route('password.request') }}">Forgot Password?</a>
+                <a class="forgot-password" href="{{ route('register') }}">Create New Account</a>
             @endif
         </form>
     </div>

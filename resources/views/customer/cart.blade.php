@@ -1,4 +1,5 @@
 <x-app-layout>
+    @if ($bookings && $bookings->count())
     <div class="cart-container">
         <h2>Cart Checkout</h2>
 
@@ -19,4 +20,9 @@
         <button class="checkout-btn" onclick="window.location.href='ServiceCatalogSigned_In.html'">Check Out</button>
         <button class="cancel-btn" onclick="window.history.back()">Cancel</button>
     </div>
+    @else
+    <div class="cart-container">
+        <h2>No Checkouts</h2>
+    </div>
+    @endif
 </x-app-layout>

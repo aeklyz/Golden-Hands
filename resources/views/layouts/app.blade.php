@@ -28,6 +28,5 @@
         </main>
 
         @include('layouts.footer')
-        @include('layouts.chatbot')
     </body>
 </html>

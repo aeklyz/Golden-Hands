@@ -28,6 +28,10 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        if ($request->user()->is_staff) {
+            return redirect()->intended(route('staff.schedule', absolute: false));
+        }
+        
         return redirect()->intended(route('customer.catalog', absolute: false));
     }
 

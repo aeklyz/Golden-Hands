@@ -3,7 +3,7 @@
         var botmanWidget = {
             introMessage: "Hi! I'm your assistant. How can I help?",
             chatServer: '/botman',
-            title: 'Live Chat',
+            title: 'Golden Hands Assistant',
             mainColor: '#D3A46E',
             bubbleBackground: '#D3A46E',
             aboutText: 'Golden Hands',

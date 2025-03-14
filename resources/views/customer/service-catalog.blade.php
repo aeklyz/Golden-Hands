@@ -1,8 +1,8 @@
 <x-app-layout>
     <div class="container service-catalog">
-        @foreach(['add_on', 'regular_massage', 'signature_massage'] as $group)
+        @foreach(['regular_massage', 'signature_massage', 'add_on'] as $group)
             <div class="service-section">
-                <h2>{{ ucfirst($group) }}</h2>
+                <h2>{{ ucfirst(str_replace('_', ' ', $group)) }}</h2>
                 <div class="grid">
                     @foreach($services->where('service_group', $group) as $service)
                         <div class="service-card">
@@ -18,5 +18,5 @@
             </div>
         @endforeach
     </div>
-
+    @include('layouts.chatbot')
 </x-app-layout>
