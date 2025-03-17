@@ -74,24 +74,19 @@ php artisan serve
 
 ## Chatbot AI Setup (Python Backend)
 
-### 1. Navigate to the Chatbot Directory
-```bash
-cd chatbot
-```
-
-### 2. Create a Virtual Environment (Optional but Recommended)
+### 1. Create a Virtual Environment (Optional but Recommended)
 ```bash
 python -m venv venv
 source venv/bin/activate  # For macOS/Linux
 venv\Scripts\activate    # For Windows
 ```
 
-### 3. Install Python Dependencies
+### 2. Install Python Dependencies
 ```bash
 pip install flask sentence-transformers
 ```
 
-### 4. Run the Python Chatbot Server
+### 3. Run the Python Chatbot Server
 ```bash
 python bot.py
 ```
@@ -106,7 +101,7 @@ The chatbot server will run on `http://127.0.0.1:5000`.
 
 ### Run Database Seeder to populate tables
 ```bash
-php artisan test
+php artisan db:seed
 ```
 
 ### Run Laravel Tests for unit testing
