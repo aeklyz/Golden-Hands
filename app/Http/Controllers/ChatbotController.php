@@ -13,18 +13,11 @@ class ChatbotController extends Controller
     public function handle(Request $request)
     {
         $config = [];
-
-        // Create BotMan instance
         $botman = BotManFactory::create($config, new LaravelCache);
 
-        // Handle user messages
         $botman->hears('.*', function (BotMan $bot) {
             $userMessage = $bot->getMessage()->getText();
-
-            // Get response from Gemini API
             $response = $this->getResponse($userMessage);
-
-            // Send response to user
             $bot->reply($response);
         });
 

@@ -7,6 +7,9 @@ use App\Models\User;
 use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use DB;
+use Illuminate\Support\Facades\Http;
 
 class BookingController extends Controller
 {
@@ -119,11 +122,68 @@ class BookingController extends Controller
         return view('staff.history', compact('appointments'));
     }
 
-    public function staffReport(Request $request)
+    public function staffReport()
     {
-        $appointments = 0;
-        // Pass the appointments to the view
-        return view('staff.report', compact('appointments'));
+        $lastMonth = Carbon::now()->subMonth();
+
+        // Fetch data from the database
+        $bookingCount = Booking::where('booking_date', '>=', $lastMonth)->count();
+
+        $uniqueCustomers = Booking::where('booking_date', '>=', $lastMonth)
+            ->distinct('customer_id')->count();
+
+        $totalProfit = Booking::where('booking_date', '>=', $lastMonth)
+            ->join('services', 'bookings.service_id', '=', 'services.id')
+            ->sum(\DB::raw('services.price * bookings.duration'));
+
+        $serviceFrequency = Booking::where('booking_date', '>=', $lastMonth)
+            ->join('services', 'bookings.service_id', '=', 'services.id')
+            ->select('services.service_name', \DB::raw('count(*) as count'))
+            ->groupBy('services.service_name')->pluck('count', 'service_name')->toArray();
+
+        $serviceGroupFrequency = Booking::where('booking_date', '>=', $lastMonth)
+            ->join('services', 'bookings.service_id', '=', 'services.id')
+            ->select('services.service_group', \DB::raw('count(*) as count'))
+            ->groupBy('services.service_group')->pluck('count', 'service_group')->toArray();
+
+        $paymentMethodFrequency = Booking::where('booking_date', '>=', $lastMonth)
+            ->select('payment_method', \DB::raw('count(*) as count'))
+            ->groupBy('payment_method')->pluck('count', 'payment_method')->toArray();
+
+        // Generate charts with QuickChart API
+        $serviceChartUrl = $this->generateChart($serviceFrequency);
+        $serviceGroupChartUrl = $this->generateChart($serviceGroupFrequency);
+        $paymentMethodChartUrl = $this->generateChart($paymentMethodFrequency);
+
+        // Load the PDF view and pass data
+        $pdf = PDF::loadView('staff.pdf', [
+            'bookingCount' => $bookingCount,
+            'uniqueCustomers' => $uniqueCustomers,
+            'totalProfit' => $totalProfit,
+            'serviceChartUrl' => $serviceChartUrl,
+            'serviceGroupChartUrl' => $serviceGroupChartUrl,
+            'paymentMethodChartUrl' => $paymentMethodChartUrl
+        ]);
+
+        return $pdf->stream('monthly_report.pdf');
+    }
+
+    public function generateChart($data)
+    {
+        $response = Http::get('https://quickchart.io/chart', [
+            'c' => json_encode([
+                'type' => 'pie',
+                'data' => [
+                    'labels' => array_keys($data),
+                    'datasets' => [
+                        ['data' => array_values($data)]
+                    ]
+                ]
+            ])
+        ]);
+
+        // Convert the binary image to base64
+        return 'data:image/png;base64,' . base64_encode($response->body());
     }
 
     /**
