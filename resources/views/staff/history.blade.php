@@ -26,7 +26,7 @@
                 </tbody>
             </table>
         @else
-            <p>No upcoming appointments found.</p>
+            <p>No previous and approved appointments</p>
         @endif
     </div>
 </x-staff-layout>

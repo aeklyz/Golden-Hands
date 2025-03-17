@@ -43,27 +43,27 @@
         <div class="faq-section">
             <div class="faq-item">
                 <h3 onclick="toggleAnswer(this)">What are your operating hours?</h3>
-                <p>YAPYAPYAP</p>
+                <p>Golden Hands Spa is a Spa based in the Philippines that has various massages.</p>
             </div>
             <div class="faq-item">
                 <h3 onclick="toggleAnswer(this)">Do I need to make an appointment?</h3>
-                <p>YAPYAPYAP</p>
+                <p>Golden Hands Spa operates from 10:00 AM to 10:00 PM, seven days a week, so you can enjoy a relaxing massage at your convenience.</p>
             </div>
             <div class="faq-item">
                 <h3 onclick="toggleAnswer(this)">What payment methods do you accept?</h3>
-                <p>YAPYAPYAP</p>
+                <p>While walk-ins are welcome, we highly recommend making an appointment to ensure availability, especially during peak hours.</p>
             </div>
             <div class="faq-item">
                 <h3 onclick="toggleAnswer(this)">Are your therapists certified?</h3>
-                <p>YAPYAPYAP</p>
+                <p>We accept a variety of payment methods, including cash, credit/debit cards (Visa, MasterCard), and mobile payment apps such as GCash and PayMaya.</p>
             </div>
             <div class="faq-item">
                 <h3 onclick="toggleAnswer(this)">Do you offer home service massages?</h3>
-                <p>YAPYAPYAP</p>
+                <p>Yes, all of our therapists are fully certified and trained in various massage techniques to ensure the highest level of service and your safety.</p>
             </div>
             <div class="faq-item">
                 <h3 onclick="toggleAnswer(this)">Additional questions?</h3>
-                <p>Contact us at [Your Contact Information] for further inquiries.</p>
+                <p>Contact us for further inquiries.</p>
             </div>
         </div>
     </div>

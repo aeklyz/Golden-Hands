@@ -41,8 +41,6 @@ class PaymentController extends Controller
         $response = $paypalModule->getExpressCheckoutDetails($request->token);
 
         if (in_array(strtoupper($response['ACK']), ['SUCCESS', 'SUCCESSWITHWARNING'])) {
-            // Update order status to 'PAID' in your database
-            // Perform additional actions like sending confirmation emails
             return redirect()->route('order.success');
         }
 
