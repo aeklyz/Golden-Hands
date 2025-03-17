@@ -23,7 +23,7 @@
 
     <p><strong>Total Bookings:</strong> {{ $bookingCount }}</p>
     <p><strong>Unique Customers:</strong> {{ $uniqueCustomers }}</p>
-    <p><strong>Total Profit:</strong> ₱{{ number_format($totalProfit, 2) }}</p>
+    <p><strong>Total Profit:</strong> {{ number_format($totalProfit, 2) }} PHP</p>
 
     <h3>Service Frequency</h3>
     <img src="{{ $serviceChartUrl }}" alt="Service Chart">
